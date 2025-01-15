@@ -1,0 +1,43 @@
+from gc import callbacks
+
+import telebot
+#from pyexpat.errors import messages
+from telebot import types
+import emoji
+
+bot = telebot.TeleBot("8085889161:AAFa-keP9B8D2l8j6GbAYYRb5yY0xjmiNFU")
+
+@bot.message_handler(content_types=['text'])
+def get_text_messages(message):
+    if message.text == '/start':
+        obj = types.InlineKeyboardMarkup()
+        bttn1 = types.InlineKeyboardButton('Начало',callback_data='start')
+        bttn2 = types.InlineKeyboardButton('Синтаксис',callback_data='syntax')
+        bttn3 = types.InlineKeyboardButton('Типы данных', callback_data='data')
+        bttn4 = types.InlineKeyboardButton('Условные операторы', callback_data='operators')
+        bttn5 = types.InlineKeyboardButton('Циклы', callback_data='cycles')
+        bttn6 = types.InlineKeyboardButton('Конец', callback_data='end')
+        obj.row(bttn1)
+        obj.row(bttn2,bttn3)
+        obj.row(bttn4, bttn5,)
+        obj.row(bttn6)
+        bot.send_message(message.from_user.id, f"\U0001F44BПривет, @{message.from_user.first_name} !\n\n\U0001f9d1\u200D\U0001f3ebЯ, @PythonNavigatorUser_Bot , помогу тебе изучить основы программирования на python\n\n\U00002757"
+                                               f"Чтобы начать, нажми на любую кропку, представленную ниже",reply_markup=obj)
+    else:
+        bot.send_message(message.from_user.id, "Чтобы начать, напиши команду /start")
+
+@bot.callback_query_handler(func=lambda callback: True)
+def callback_message(callback):
+    if callback.data == 'start':
+        bot.edit_message_text('Начало',callback.message.chat.id,callback.message.message_id)
+    elif callback.data == 'syntax':
+        bot.edit_message_text('Синтаксис',callback.message.chat.id,callback.message.message_id)
+    elif callback.data == 'data':
+        bot.edit_message_text('Типы данных',callback.message.chat.id,callback.message.message_id)
+    elif callback.data == 'cycles':
+        bot.edit_message_text('Циклы',callback.message.chat.id,callback.message.message_id)
+    elif callback.data == 'end':
+        bot.edit_message_text('Конец',callback.message.chat.id,callback.message.message_id-1)
+
+bot.polling()
+
