@@ -67,14 +67,14 @@ def callback_message(callback):
     elif callback.data == 'cycles':
         bttn11 = types.InlineKeyboardButton('Дальше \U000027A1', callback_data='cycles1')
         obj1.row(bttn11)
-        bot.edit_message_text('\U0001f9d1\u200D\U0001f3ebИногда программу нужно заставить повторять одно``` и то же действие несколько раз. Но как это сделать?\
+        bot.edit_message_text('\U0001f9d1\u200D\U0001f3ebИногда программу нужно заставить повторять одно и то же действие несколько раз. Но как это сделать?\
  На помощь нам приходят циклы. В Python есть всего два цикла: for и while.\nЦикл for позволяет выполнять операцию установленное количество раз.\
  Структура цикла for выглядит следующим образом: for + перменная + in + функция range(количество повторений) + :.\
  С новой строки с отступом начинается код\n\U0001F6A9Важно! range(n) возвращает последовательность целых чисел от 0 до n, не включая n. Например: range(5) вернёт последовательность:\
 0,1,2,3,4.\n\U000026AA Мы можем установить, с какого числа хотим начать. Например: range(1,5) вернёт последовательность целых чисел: 1,2,3,4.\
 Также можно поменять шаг цикла, установив третий аргумент в функцию. Например: range(1,10,2) вернёт последовательность целых чисел: 1,3,5,7,9.',callback.message.chat.id,callback.message.message_id,reply_markup=obj1)
     elif callback.data == 'end':
-        bot.edit_message_text('\U0001f9d1\u200D\U0001f3ebСпасибо большое за прохождение бота!\n Надеюсь Вы получили новые знания и провели время с пользой! ',callback.message.chat.id,callback.message.message_id)
+        bot.edit_message_text('Спасибо большое за прохождение бота!\n Надеюсь Вы получили новые знания и провели время с пользой! ',callback.message.chat.id,callback.message.message_id)
 
 
     if callback.data == 'start1':
@@ -113,11 +113,12 @@ def callback_message(callback):
  Структура цикла while выглядит следующим образом:\nwhile + условие + :\nТак же, как и в случае с циклом for, с новой строки с отступом начинается код.',callback.message.chat.id,callback.message.message_id,reply_markup=obj2)
 
 
-
     if callback.data == 'start2':
         bot.edit_message_text('Чтобы запустить IDLE нужно зайти в меню Пуск и ввести название. При запуске первым делом вы увидете перед собой окно в интерактивном режиме. Всё, что вы пишете в нём будет сразу же выполнено. Интерактивный режим может быть полезен для\
  быстрого тестирования работоспособности кода, однако он не подходит для больших программ, из-за чего пользуются им довольно редко.\
- \nЧтобы открыть окно в режиме редактора следует создать новый файл или открыть старый. Для этого в главном меню выбираем File ---> New file или File ---> Open, после чего октроется окно редактора кода. Этот режим включает все возможности интерактивного режима',callback.message.chat.id,callback.message.message_id)
+ \nЧтобы открыть окно в режиме редактора следует создать новый файл или открыть старый. Для этого в главном меню выбираем File ---> New file или File ---> Open, после чего октроется окно редактора кода. Этот режим включает все возможности интерактивного режима\
+\nТеперь, когда Вы ознакомились как работать в программе, можете приступить к новой теме, прописав команду /menu',callback.message.chat.id,callback.message.message_id)
+
     if callback.data == 'operations2':
         bttn31 = types.InlineKeyboardButton('Дальше \U000027A1', callback_data='operations3')
         obj3.row(bttn31)
@@ -151,6 +152,8 @@ def callback_message(callback):
         bttn31 = types.InlineKeyboardButton('Дальше \U000027A1', callback_data='end3')
         obj3.row(bttn31)
         bot.edit_message_text('Конец2',callback.message.chat.id,callback.message.message_id,reply_markup=obj3)
+
+
 
     if callback.data == 'operations3':
         bttn41 = types.InlineKeyboardButton('Дальше \U000027A1', callback_data='operations4')
